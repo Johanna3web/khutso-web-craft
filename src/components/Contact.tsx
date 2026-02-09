@@ -2,18 +2,39 @@ import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string).trim();
+    const email = (formData.get("email") as string).trim();
+    const message = (formData.get("message") as string).trim();
+
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
       setLoading(false);
+      return;
+    }
+
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert([{ name, email, message }]);
+
+    setLoading(false);
+    if (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    } else {
       toast.success("Message sent! I'll get back to you soon.");
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+      form.reset();
+    }
   };
 
   return (
@@ -85,6 +106,7 @@ const Contact = () => {
             <div>
               <input
                 type="text"
+                name="name"
                 required
                 placeholder="Your name"
                 maxLength={100}
@@ -94,6 +116,7 @@ const Contact = () => {
             <div>
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="Your email"
                 maxLength={255}
@@ -102,6 +125,7 @@ const Contact = () => {
             </div>
             <div>
               <textarea
+                name="message"
                 required
                 rows={5}
                 placeholder="Tell me about your project..."
