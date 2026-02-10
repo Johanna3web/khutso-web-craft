@@ -22,6 +22,11 @@ const projects = [
     description: "A powerful AI-powered content generation platform for creating text, images, and more using cutting-edge artificial intelligence.",
     url: "https://ai-generator-hub-tan.vercel.app/",
   },
+  {
+    title: "Beats by Siba Boutique",
+    description: "A stylish e-commerce boutique showcasing curated fashion and accessories with a modern, clean shopping experience.",
+    url: "https://beats-by-siba-boutique.vercel.app/",
+  },
 ];
 
 const Projects = () => {
