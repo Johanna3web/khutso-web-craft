@@ -3,9 +3,9 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
-    title: "Professional Portfolio",
-    description: "A sleek, elegant portfolio website showcasing personal branding, skills, and professional experience with a modern minimal design.",
-    url: "https://malehu-elegant-folio-d9zm.vercel.app/",
+    title: "Beats by Siba Boutique",
+    description: "A stylish e-commerce boutique showcasing curated fashion and accessories with a modern, clean shopping experience.",
+    url: "https://beats-by-siba-boutique.vercel.app/",
   },
   {
     title: "Resume Builder",
@@ -23,9 +23,9 @@ const projects = [
     url: "https://ai-generator-hub-tan.vercel.app/",
   },
   {
-    title: "Beats by Siba Boutique",
-    description: "A stylish e-commerce boutique showcasing curated fashion and accessories with a modern, clean shopping experience.",
-    url: "https://beats-by-siba-boutique.vercel.app/",
+    title: "Professional Portfolio",
+    description: "A sleek, elegant portfolio website showcasing personal branding, skills, and professional experience with a modern minimal design.",
+    url: "https://malehu-elegant-folio-d9zm.vercel.app/",
   },
 ];
 
