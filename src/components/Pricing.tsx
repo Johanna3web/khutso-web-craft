@@ -28,7 +28,7 @@ const tiers: PricingTier[] = [
     popular: true,
     description: "Best for graduates & professionals",
     features: [
-      "3–4 pages",
+      "3–5 pages",
       "About, Skills, Projects, Contact",
       "Download CV button",
       "WhatsApp button",
@@ -41,7 +41,7 @@ const tiers: PricingTier[] = [
     price: "R2,500",
     description: "For small businesses & startups",
     features: [
-      "Up to 5 pages",
+      "Up to 8 pages",
       "Home, About, Services, Gallery, Contact",
       "WhatsApp button",
       "Google Maps integration",
