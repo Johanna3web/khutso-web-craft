@@ -27,14 +27,21 @@ const Contact = () => {
       .from("contact_messages")
       .insert([{ name, email, message }]);
 
-    setLoading(false);
     if (error) {
+      setLoading(false);
       toast.error("Something went wrong. Please try again.");
       console.error(error);
-    } else {
-      toast.success("Message sent! I'll get back to you soon.");
-      form.reset();
+      return;
     }
+
+    // Send email notification (fire-and-forget)
+    supabase.functions.invoke("send-notification", {
+      body: { name, email, message },
+    }).catch(console.error);
+
+    setLoading(false);
+    toast.success("Message sent! I'll get back to you soon.");
+    form.reset();
   };
 
   return (
